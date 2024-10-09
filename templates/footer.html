@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+    <div class="footer-container">
+        <!-- Contact Addresses -->
+        <div class="footer-section contact-info">
+            <p>For Contact:</p>
+            <p><img src="{% static 'images/em.png' %}" alt="Email" class="contact-icon"> deped.binancity@deped.gov.ph</p>
+            <p><img src="{% static 'images/telep.png' %}" alt="Telephone" class="contact-icon"> 511 - 4143 | 511 - 8620</p>
+            <p><img src="{% static 'images/telep.png' %}" alt="Telephone" class="contact-icon"> 511 - 8746 | 511 - 4191</p>
+        </div>
+
+        <!-- Middle Section with Logos and Sentence -->
+        <div class="footer-section middle-logos">
+            <div class="logos-container">
+                <img src="{% static 'images/logo1.png' %}" alt="Logo 1" class="footer-logo">
+                <img src="{% static 'images/logo2.png' %}" alt="Logo 2" class="footer-logo">
+                <img src="{% static 'images/logo.png' %}" alt="Logo 3" class="footer-logo">
+                <img src="{% static 'images/logo4.png' %}" alt="Logo 4" class="footer-logo">
+            </div>
+            <p class="short-sentence">All content is in the public domain unless otherwise stated.</p>
+        </div>
+
+        <!-- Useful Links Section -->
+        <div class="footer-section useful-links">
+            <h4>Useful Links</h4>
+            <ul>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">Bids Opportunities</a></li>
+                <li><a href="#">Division Memorandum</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Developer</a></li>
+            </ul>
+        </div>
+
+        <!-- Social Media Links -->
+        <div class="footer-section social-media">
+            <h4>Follow Us</h4>
+            <div class="social-icons">
+                <a href="#"><img src="{% static 'images/facebook.png' %}" alt="Facebook"></a>
+                <a href="#"><img src="{% static 'images/twitter.png' %}" alt="Twitter"></a>
+                <a href="#"><img src="{% static 'images/insta.png' %}" alt="Instagram"></a>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>&copy; DEPED | DIVISION BINAN</p>
+    </div>
+
+
+<style>
+   /* Footer Styles */
+        footer {
+            background: url("{% static 'images/footer.png' %}") no-repeat center center;
+            background-size: cover;
+            padding: 20px 30px;
+            color: #ffffff;
+            font-size: 14px;
+            width: 100%;
+            box-sizing: border-box;
+            position: relative;
+            font-family: 'Canva Sans', sans-serif;
+        }
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            align-items: center; /* Center align items */
+        }
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        .contact-info {
+            font-size: 16px;
+            text-align: left;
+            margin-left: -70px;
+            position: relative;
+            z-index: 1;
+        }
+        .contact-info img.contact-icon {
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+        .social-media {
+            text-align: right;
+            margin-right: -70px;
+            position: relative;
+            z-index: 1;
+        }
+        .social-media h4 {
+            font-size: 20px;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+        .social-icons {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+        .social-icons img {
+            width: 40px;
+            height: 40px;
+        }
+        .copyright {
+            text-align: center;
+            background-color: #020059;
+            padding: -10px 0; /* Adjusted padding */
+            color: #ffffff;
+            border-radius: 5px;
+            width: 100%;
+            position: absolute; /* Changed to relative */
+            bottom: 0;
+            left: 0;
+            bo-sizing: border-box;
+            margin: 0;
+            font-size: 14px;
+        }
+
+        /* Middle Section with Logos and Sentence */
+        .middle-logos {
+            text-align: center;
+            flex: 1;
+            margin: 10px 10;
+            right: -80px;
+        }
+        .logos-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .footer-logo {
+            width: 90px;
+            height: 90px;
+        }
+        .short-sentence {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #ffffff;
+        }
+
+       /* Useful Links Styles */
+    .useful-links {
+    font-family: 'Canva Sans', sans-serif;
+    font-size: 16px;
+    text-align: center;
+    left: 150px;
+    position: relative;
+    z-index: 1;
+}
+
+.useful-links h4 {
+    font-family: 'Canva Sans', sans-serif;
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.useful-links ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px;
+}
+
+.useful-links ul li {
+    margin-bottom: 2px;
+}
+
+.useful-links ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.useful-links ul li a:hover {
+    color: #dddddd;
+}
+</style>

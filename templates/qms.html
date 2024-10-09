@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% load static %}
+{% load static %}
+<header>
+     {% include 'header.html' %}
+</header>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News</title>
+</head>
+
+    <!-- Navigation Menu (can be copied from your main page) -->
+    <nav>
+        <ul class="menu">
+            <li><a href="{% url 'index' %}">HOME</a></li>
+            <li><a href="{% url 'about' %}">ABOUT</a></li>
+            <li><a href="{% url 'news' %}">NEWS</a></li>
+            <li><a href="{% url 'issuances' %}">ISSUANCES</a></li>
+            <li><a href="{% url 'qms' %}">QMS</a></li>
+            <li><a href="{% url 'procurement' %}">PROCUREMENT</a></li>
+            <li><a href="{% url 'learningresources' %}">LEARNING RESOURCES</a></li>
+            <li><a href="{% url 'research' %}">RESEARCH</a></li>
+            <li><a href="{% url 'contact' %}">CONTACT US</a></li>
+        </ul>
+    </nav>
+    <!-- Divider Line -->
+    <div class="divider"></div>
+
+<body>
+ <!-- Placeholder for Body Content -->
+    <div class="body-placeholder">
+        <p>Body Content Goes Here</p>
+    </div>
+
+ <style>
+
+    <!-- About Us Content -->
+
+   /* Navigation Menu Styles */
+        nav {
+            text-align: center;
+
+        }
+        .menu {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            list-style-type: none;
+            padding: 0;
+            margin-top: 35px;
+
+        }
+        .menu li {
+            display: inline;
+        }
+        .menu a {
+            font-family: 'Canva Sans', sans-serif;
+            text-decoration: none;
+            color: black;
+            font-size: 18px;
+            padding: 10px 20px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+
+
+        }
+        .menu a:hover {
+            color: #0056b3;
+        }
+
+        /* Horizontal Line Style */
+        .divider {
+            width: 90%;
+            height: 2px;
+            background-color: #000;
+            margin: 20px auto;
+        }
+        /* Placeholder for Body Content */
+        .body-placeholder {
+            flex: 1;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #555;
+            font-size: 24px;
+        }
+ </style>
+
+<footer>
+     {% include 'footer.html' %}
+    </footer>

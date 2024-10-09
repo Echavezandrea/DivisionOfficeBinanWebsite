@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+{% load static %}
+{% load static %}
+<header>
+     {% include 'header.html' %}
+</header>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+</head>
+    <style>
+
+
+        /* Global Styles */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            min-height: 100vh; /* Ensures the body can expand beyond the viewport height */
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+            overflow-x: hidden;
+        }
+
+.container {
+    max-width: 3500px; /* Adjust the width to your preference */
+    margin: 0 auto; /* This centers the container */
+    padding-left: 0; /* Optional: Adds some padding to the left */
+    padding-right: 0; /* Optional: Adds some padding to the right */
+    transform-origin: 0 0; /* Ensures scaling happens from the top-left corner */
+}
+
+
+html {
+    font-size: 100%; /* Sets the base font size */
+}
+/* Add this to ensure all elements respect the box-sizing */
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+* Zoom behavior for text and other scalable content */
+@media screen and (min-width: 600px) {
+    html {
+        font-size: 112.5%; /* Zoom in by 12.5% when the screen width is 600px or more */
+    }
+}
+
+@media screen and (min-width: 900px) {
+    html {
+        font-size: 125%; /* Zoom in by 25% when the screen width is 900px or more */
+    }
+}
+
+
+        /* Navigation Menu Styles */
+        nav {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .menu {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            list-style-type: none;
+            padding: 0;
+        }
+        .menu li {
+            display: inline;
+        }
+        .menu a {
+            font-family: 'Canva Sans', sans-serif;
+            text-decoration: none;
+            color: black;
+            font-size: 18px;
+            padding: 10px 20px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+
+        }
+        .menu a:hover {
+            color: #0056b3;
+        }
+
+        /* Horizontal Line Style */
+        .divider {
+            width: 100%;
+            height: 2px;
+            background-color: #000;
+            margin: 20px auto;
+        }
+
+
+
+          /* Slideshow Styles 3 pictures event */
+        .slideshow-container {
+            position: relative;
+            max-width: 100%;
+            height: 500px; /* Adjust this value to set the desired height */
+           margin: auto;
+            overflow: hidden;
+        }
+
+        .mySlides {
+            display: none;
+            height: 100%;
+            width: 100%;
+        }
+
+
+
+
+     /* Navigation Bar Styles */
+.side-nav {
+    top: 20px;
+    width: 300px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    margin-left: 20px;
+    margin-top: -515px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.second-nav {
+    margin-top: -370px; /* Add margin to separate it from the first nav */
+}
+
+.side-nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.side-nav li {
+    margin: 10px 0;
+}
+
+.side-nav a {
+    text-decoration: none;
+    color: black;
+    font-family: 'Aptos', sans-serif;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.side-nav a:hover {
+    color: blue;
+}
+
+.second-nav li:first-child {
+    font-weight: bold;
+    font-size: 18px; /* Adjust font size for the title */
+}
+
+/* Adjust wrapper for the side navigation */
+.wrapper {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 20px;
+    gap: 40px; /* Adjust gap to provide space between nav and articles */
+}
+
+
+.DSDO_title {
+    width: 280px;
+    font-family: 'Aptos', sans-serif; /* Ensure font-family is correct */
+    font-weight: 700; /* Use '700' for bold text */
+    margin-bottom: 30px;
+    font-size: 17px;
+    text-align: center;
+    margin-top: -10px;
+    margin-left: 20px;
+
+}
+
+.DSO {
+    width: 300px;
+    font-family: 'Aptos', sans-serif; /* Ensure font-family is correct */
+    font-size: 15px;
+    text-align: left;
+    margin-top: -10px;
+    margin-left: 20px;
+    margin-bottom: 350px;
+}
+
+.nav-photo {
+     width: 300px; /* Default width */
+    height: auto; /* Maintain aspect ratio */
+    margin-top: 30px; /* Space above the photo */
+    margin-left: 20px;
+    }
+
+
+    .deped-section {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    margin-top: -1230px;
+    margin-left: 400px;
+    width: 900px;
+
+}
+
+.deped-section h2 {
+    color: #0044cc;
+    margin-top: 20px;
+}
+
+.deped-section p {
+    text-align: justify;
+    margin-bottom: 20px;
+}
+
+.deped-section ul {
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+
+.deped-section ul li {
+    list-style-type: disc;
+    margin-bottom: 10px;
+}
+
+
+
+
+    </style>
+
+
+<body>
+
+<div class="container">
+    <!-- Navigation Menu -->
+    <nav>
+        <ul class="menu">
+            <li><a href="{% url 'index' %}">HOME</a></li>
+            <li><a href="{% url 'about' %}">ABOUT</a></li>
+            <li><a href="{% url 'news' %}">NEWS</a></li>
+            <li><a href="{% url 'issuances' %}">ISSUANCES</a></li>
+            <li><a href="{% url 'qms' %}">QMS</a></li>
+            <li><a href="{% url 'procurement' %}">PROCUREMENT</a></li>
+            <li><a href="{% url 'learningresources' %}">LEARNING RESOURCES</a></li>
+            <li><a href="{% url 'research' %}">RESEARCH</a></li>
+            <li><a href="{% url 'contact' %}">CONTACT US</a></li>
+        </ul>
+    </nav>
+
+    <!-- Divider Line -->
+    <div class="divider"></div>
+
+    <!-- Slideshow Section -->
+    <div class="slideshow-container">
+    </div>
+    <!-- "What's New" Section -->
+<div class="whats-new-container">
+    </div>
+
+
+
+     <div class="wrapper">
+        <!-- Side Navigation -->
+        <div class="side-nav">
+            <ul>
+                <li><a href="#announcement">Announcement</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#achievements">Achievements</a></li>
+            </ul>
+        </div>
+    </div>
+     <div class="side-nav second-nav">
+        <ul>
+            <li><strong>Useful Links</strong></li> <!-- Title text, not a link -->
+            <li><a href="#careers">Careers</a></li>
+            <li><a href="#bids">Bids Opportunities</a></li>
+            <li><a href="#division-memo">Division Memorandum</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+        </ul>
+    </div>
+
+    <div class="nav-content">
+    <img src="{% static 'images/qr.jpg' %}" alt="Descriptive Text" class="nav-photo">
+
+    <div class="DSDO_title">
+        <h3><strong>DSDO Binan Client Satisfaction Measurement (CSM)</strong></h3>
+    </div>
+
+    <div class="DSO">
+        <p>The Client Satisfaction (CSM) tracks the customer experience of government offices. Your feedback on your recently concluded transaction will help this office provide better service. Personal information shared will be kept confidential and you always have the option to not answer this form.</p>
+        <p><strong>ANTI-RED TAPE AUTHORITY</strong></p>
+        <p>PSA Approval No. ARTA-2242-3</p>
+    </div>
+</div>
+
+<div class="deped-section">
+    <h2>The DepEd Vision</h2>
+    <p>
+        We dream of Filipinos who passionately love their country and whose values and competencies enable them to realize their full potential and contribute meaningfully to building the nation. As a learner-centered public institution, the Department of Education continuously improves itself to better serve its stakeholders.
+    </p>
+
+    <h2>The DepEd Mission</h2>
+    <p>
+        To protect and promote the right of every Filipino to quality, equitable, culture-based, and complete basic education where:
+    </p>
+    <ul>
+        <li>Students learn in a child-friendly, gender-sensitive, safe, and motivating environment.</li>
+        <li>Teachers facilitate learning and constantly nurture every learner.</li>
+        <li>Administrators and staff, as stewards of the institution, ensure an enabling and supportive environment for effective learning to happen.</li>
+        <li>Family, community, and other stakeholders are actively engaged and share responsibility for developing life-long learners.</li>
+    </ul>
+
+    <h2>Core Values</h2>
+    <ul>
+        <li>Maka-Diyos</li>
+        <li>Maka-tao</li>
+        <li>Makakalikasan</li>
+        <li>Makabansa</li>
+    </ul>
+
+    <h2>Our Mandate</h2>
+    <p>
+        The Department of Education was established through the Education Decree of 1863 as the Superior Commission of Primary Instruction under a Chairman. The Education agency underwent many reorganization efforts in the 20th century in order to better define its purpose vis a vis the changing administrations and charters. The present day Department of Education was eventually mandated through Republic Act 9155, otherwise known as the Governance of Basic Education act of 2001 which establishes the mandate of this agency. The Department of Education (DepEd) formulates, implements, and coordinates policies, plans, programs and projects in the areas of formal and non-formal basic education. It supervises all elementary and secondary education institutions, including alternative learning systems, both public and private; and provides for the establishment and maintenance of a complete, adequate, and integrated system of basic education relevant to the goals of national development.
+    </p>
+</div>
+
+</div>
+</body>
+
+
+    <!-- Footer Section -->
+    <footer>
+        {% include 'footer.html' %}
+    </footer>

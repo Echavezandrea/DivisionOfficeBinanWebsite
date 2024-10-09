@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+{% load static %}
+{% load static %}
+<header>
+     {% include 'header.html' %}
+</header>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q1</title>
+</head>
+    <style>
+
+
+        /* Global Styles */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            min-height: 100vh; /* Ensures the body can expand beyond the viewport height */
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+            overflow-x: hidden;
+        }
+
+.container {
+    max-width: 3500px; /* Adjust the width to your preference */
+    margin: 0 auto; /* This centers the container */
+    padding-left: 0; /* Optional: Adds some padding to the left */
+    padding-right: 0; /* Optional: Adds some padding to the right */
+    transform-origin: 0 0; /* Ensures scaling happens from the top-left corner */
+}
+
+
+html {
+    font-size: 100%; /* Sets the base font size */
+}
+/* Add this to ensure all elements respect the box-sizing */
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+* Zoom behavior for text and other scalable content */
+@media screen and (min-width: 600px) {
+    html {
+        font-size: 112.5%; /* Zoom in by 12.5% when the screen width is 600px or more */
+    }
+}
+
+@media screen and (min-width: 900px) {
+    html {
+        font-size: 125%; /* Zoom in by 25% when the screen width is 900px or more */
+    }
+}
+
+
+      /* Navigation Menu Styles */
+        nav {
+            text-align: center;
+
+        }
+        .menu {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            list-style-type: none;
+            padding: 0;
+            margin-top: 35px;
+
+        }
+        .menu li {
+            display: inline;
+        }
+        .menu a {
+            font-family: 'Canva Sans', sans-serif;
+            text-decoration: none;
+            color: black;
+            font-size: 18px;
+            padding: 10px 20px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+
+
+        }
+        .menu a:hover {
+            color: #0056b3;
+        }
+
+        /* Horizontal Line Style */
+        .divider {
+            width: 100%;
+            height: 2px;
+            background-color: #000;
+            margin: 20px auto;
+        }
+
+/* Navigation Bar Styles */
+.side-nav {
+    width: 300px;
+    padding: 20px; /* Increased padding for a more spacious look */
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    font-family: 'Aptos', sans-serif;
+    margin-right: 20px; /* Space between the side navigation and the content */
+    margin-bottom: 300px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1); /* Adding shadow for depth */
+    transition: transform 0.3s ease; /* Smooth transition for hover effect */
+    margin-top: -70px;
+}
+
+
+.side-nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.side-nav li {
+    margin-bottom: 15px;
+    transition: background-color 0.3s ease; /* Smooth background change on hover */
+}
+
+.side-nav li:hover {
+    background-color: rgba(0, 68, 204, 0.1); /* Light blue background on hover */
+    border-radius: 5px; /* Rounded corners on hover */
+}
+
+.side-nav li:first-child {
+    font-weight: bold;
+    font-size: 18px; /* Adjust font size for the title */
+    margin-bottom: 10px;
+    color: #333; /* Darker color for better contrast */
+}
+
+.side-nav c {
+    text-decoration: none;
+    color: #0044cc;
+    font-size: 16px;
+    transition: color 0.3s ease; /* Smooth color change on hover */
+}
+
+
+
+
+
+
+
+
+.mb-0 {
+    margin-bottom: 0; /* Removes bottom margin */
+    margin-top: -30px;
+    font-family: 'Arial', sans-serif; /* Font family */
+    font-size: 18px; /* Font size */
+    color: #333; /* Text color */
+    line-height: 1.5; /* Line height for better readability */
+    text-align: left; /* Centers the text */
+    padding: 10px; /* Adds padding around the text */
+
+    border-radius: 5px; /* Rounded corners for the background */
+}
+
+
+
+/* Heading Styles */
+h5 {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 3em;
+    color: #3498db;
+    text-align: left;
+    letter-spacing: 2px;
+    margin-bottom: 17px;
+    margin-left: 1000px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    margin-top: 5px;
+}
+
+h6 {
+    font-family: 'Aptos', sans-serif;  /* Use your preferred font */
+    font-weight: bold;                 /* Makes the text bold */
+    font-size: 1.8em;                  /* Adjusts the size of the heading */
+    color: #333;                       /* Sets the text color */
+    margin: 20px 0;                   /* Adds vertical space around the heading */
+    text-align: left;                  /* Aligns the text to the left */
+ text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Link Styles */
+d {
+    font-family: Helvetica;
+    font-size: 16px;
+    color: blue;
+}
+
+d:visited {
+    color: blue;
+}
+
+d:hover {
+    color: red;
+}
+
+
+/* Useful Links List Styles */
+
+
+      /* General Table Styles */
+table {
+    width: 76%; /* Full width of the container */
+    border-collapse: collapse; /* Collapses borders */
+    margin-bottom: 150px; /* Margin around the table */
+    font-size: 16px; /* Font size for table text */
+    border-radius: 10px; /* Rounded corners */
+    overflow: hidden; /* Ensures rounded corners are visible */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow effect */
+    margin-left: 320px;
+    margin-top: -980px;
+
+}
+
+/* Table Header Styles */
+thead {
+    background: linear-gradient(135deg, #3498db, #2980b9); /* Gradient background for header */
+}
+
+th {
+    color: white; /* Header text color */
+    padding: 12px; /* Increased padding for table header */
+    text-align: left; /* Aligns text to the left */
+    font-weight: bold; /* Bold font weight */
+     font-size: 20px;
+    text-transform: uppercase; /* Uppercase header text */
+}
+
+/* Table Cell Styles */
+td {
+    padding: 12px; /* Increased padding for table cells */
+    border: 1px solid #ddd; /* Border for table cells */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+}
+
+/* Row Hover Effect */
+tr:hover {
+    background-color: #eaf5ff; /* Light blue background on row hover */
+    transform: scale(1.02); /* Slightly enlarge the row on hover */
+}
+
+/* Responsive Table Styles */
+@media screen and (max-width: 600px) {
+    table {
+        font-size: 14px; /* Smaller font size on small screens */
+    }
+
+    th, td {
+        padding: 10px; /* Adjust padding for smaller screens */
+    }
+}
+
+/* Alternate Row Colors */
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9; /* Light gray for even rows */
+}
+
+/* Link Styles */
+d {
+    color: #black; /* Link color */
+    text-decoration: none; /* Remove underline */
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+d:hover {
+    color: #2980b9; /* Darker link color on hover */
+    text-decoration: underline; /* Underline on hover */
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 600px) {
+    th, td {
+        font-size: 14px; /* Slightly smaller font on small screens */
+    }
+}
+
+
+
+
+
+
+
+
+    </style>
+
+
+<body>
+
+<div class="container">
+        <!-- Navigation Menu -->
+        <nav>
+            <ul class="menu">
+                <li><a href="{% url 'index' %}">HOME</a></li>
+                <li><a href="{% url 'about' %}">ABOUT</a></li>
+                <li><a href="{% url 'news' %}">NEWS</a></li>
+                <li><a href="{% url 'issuances' %}">ISSUANCES</a></li>
+                <li><a href="{% url 'qms' %}">QMS</a></li>
+                <li><a href="{% url 'procurement' %}">PROCUREMENT</a></li>
+                <li><a href="{% url 'learningresources' %}">LEARNING RESOURCES</a></li>
+                <li><a href="{% url 'research' %}">RESEARCH</a></li>
+                <li><a href="{% url 'contact' %}">CONTACT US</a></li>
+            </ul>
+        </nav>
+
+    <!-- Divider Line -->
+    <div class="divider"></div>
+
+
+
+
+
+<h5> <center>Quarter 1</center></h5>
+     <div class="wrapper">
+
+        <!-- Side Navigation -->
+      <div class="side-nav">
+            <ul>
+                 <h6><b>About</b></h6><br>
+                <p class="mb-0">This Page contains Self Learning Modules that is developed to support Modular Distance Learning</p>
+
+                <li><strong>Quick Links</strong></li>
+                 <li><c href="#">Deped Program</c></li>
+                     <ol class="list-unstyled" >
+              <li><c class="ex2" href="https://sites.google.com/deped.gov.ph/depedtv-program-grid?fbclid=IwAR2Jw-BPCSwXnZ5JrEJ1SWSHM3j7ZK9g7QeFiGb0stVBHIc5WSHXnPytWbU">
+                  <img style="width:20px; height: 20px;" src="/static/images/external.png" alt="DepEd TV Programs"> &nbsp; Deped TV Programs</c></li>
+              <li><c href="#">
+                <img style="width:20px; height: 20px;" src="/static/images/external.png" alt="Main Quarter"> &nbsp; Main Quarter</c></li>
+              <li><c href="#">
+                <img style="width:20px; height: 20px;" src="/static/images/external.png" alt="Quarter 1 SLMS"> &nbsp; Quarter 1 SLMS</c></li>
+              <li><c href="#">
+                <img style="width:20px; height: 20px;" src="/static/images/external.png" alt="Quarter 2 SLMS"> &nbsp; Quarter 2 SLMS</c></li>
+              <li><c href="#">
+                <img style="width:20px; height: 20px;" src="/static/images/external.png" alt="Quarter 3 SLMS"> &nbsp; Quarter 3 SLMS</c></li>
+              <li><c href="#">
+                <img style="width:20px; height: 20px;" src="/static/images/external.png" alt="Quarter 4 SLMS"> &nbsp; Quarter 4 SLMS</c></li>
+        </ol>
+                <br>
+                <br>
+                <li><strong>Useful Links</strong></li> <!-- Title text, not a link -->
+                <li><c href="#">Careers</c></li>
+                <li><c href="#">Bids Opportunities</c></li>
+                <li><c href="#">Contact Us</c></li>
+            </ul>
+        </div>
+
+</div>
+
+
+
+    <table>
+        <thead>
+            <tr>
+                <th>GRADE LEVEL</th>
+                <th>Link</th>
+            </tr>
+        </thead>
+       <tbody>
+    <tr>
+        <td><img style="width:20px; height: 20px;" src="/static/images/folder.png" alt="Folder Icon"> Kinder</td>
+        <td><d href="https://drive.google.com/embeddedfolderview?id=1WmPpiDojfTyZk1Ok2pgaS6lL_RPFYHXY#grid">Kinder</d></td>
+    </tr>
+    <tr>
+        <td><img style="width:20px; height: 20px;" src="/static/images/folder.png" alt="Folder Icon"> Grade 1</td>
+        <td><d href="https://drive.google.com/embeddedfolderview?id=1MzZjhcbVXrHwM1bTRv2OkEzMTZKGthxV#grid">Grade 1</d></td>
+    </tr>
+    <tr>
+        <td><img style="width:20px; height: 20px;" src="/static/images/folder.png" alt="Folder Icon"> Grade 2</td>
+        <td><d href="https://drive.google.com/embeddedfolderview?id=10RljL7fmEfMYOYuebXV6FyxkjbJpNx17#grid">Grade 2</d></td>
+    </tr>
+    <tr>
+        <td><img style="width:20px; height: 20px;" src="/static/images/folder.jpg" alt="Folder Icon"> Grade 3</td>
+        <td><d href="https://drive.google.com/embeddedfolderview?id=16LHbDn7RpQ8QsPEdaWzxRY0URowUI7ew#grid">Grade 3</d></td>
+    </tr>
+    <tr>
+        <td><img style="width:20px; height: 20px;" src="/static/images/folder.png" alt="Folder Icon"> Grade 4</td>
+        <td><d href="https://drive.google.com/embeddedfolderview?id=1egj3_vSv_p8xcFosBkpkDuGnVppylW9n#grid">Grade 4</d></td>
+    </tr>
+    <tr>
+        <td><img style="width:20px; height: 20px;" src="/static/images/folder.png" alt="Folder Icon"> Grade 5</td>
+        <td><d href="https://drive.google.com/embeddedfolderview?id=1EPgj7l-RjQlyZdap278OKMXvEureHSnz#grid">Grade 5</d></td>
+    </tr>
+    <tr>
+        <td><img style="width:20px; height: 20px;" src="/static/images/folder.png" alt="Folder Icon"> Grade 6</td>
+        <td><d href="https://drive.google.com/embeddedfolderview?id=1Hn_sfKDx26tmCAcfcjRNSHeVcY4lyfZ3#grid">Grade 6</d></td>
+    </tr>
+    <tr>
+        <td><img style="width:20px; height: 20px;" src="/static/images/folder.png" alt="Folder Icon"> Grade 7</td>
+        <td><d href="https://drive.google.com/embeddedfolderview?id=1cBrVyVlZldgr5Dkosqngyns2z6YReFgU#grid">Grade 7</d></td>
+    </tr>
+    <tr>
+        <td><img style="width:20px; height: 20px;" src="/static/images/folder.png" alt="Folder Icon"> Grade 8</td>
+        <td><d href="https://drive.google.com/embeddedfolderview?id=1_KSMSmMs4ndSD2-IV4kf1bJQGviCX1vl#grid">Grade 8</d></td>
+    </tr>
+    <tr>
+        <td><img style="width:20px; height: 20px;" src="/static/images/folder.png" alt="Folder Icon"> Grade 9</td>
+        <td><d href="https://drive.google.com/embeddedfolderview?id=1c3vylVoll5y0i50cTDqNKxpTk1OBOtDB#grid">Grade 9</d></td>
+    </tr>
+    <tr>
+        <td><img style="width:20px; height: 20px;" src="/static/images/folder.png" alt="Folder Icon"> Grade 10</td>
+        <td><d href="https://drive.google.com/embeddedfolderview?id=1WFbhjz3hFrqwV_ehPIRKJQiyns2nHmST#grid">Grade 10</d></td>
+    </tr>
+    <tr>
+        <td><img style="width:20px; height: 20px;" src="/static/images/folder.png" alt="Folder Icon"> Grade 11</td>
+        <td><d href="https://drive.google.com/embeddedfolderview?id=1a7W4uz0m-k-NETPY2qAF13JSdvpkr833#grid">Grade 11</d></td>
+    </tr>
+    <tr>
+        <td><img style="width:20px; height: 20px;" src="/static/images/folder.png" alt="Folder Icon"> Grade 12</td>
+        <td><d href="https://drive.google.com/embeddedfolderview?id=1uKmASqx3G_x9q04vzNslrO0zvX3zi8Sg#grid">Grade 12</d></td>
+    </tr>
+</tbody>
+
+    </table>
+</div>
+</body>
+
+
+    <!-- Footer Section -->
+    <footer>
+        {% include 'footer.html' %}
+    </footer>

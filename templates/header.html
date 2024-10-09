@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+    <div class="container-fluid">
+        <div class="header-row">
+            <img src="{% static 'images/logo.png' %}" alt="Logo" class="header-logo">
+            <div class="header-text">
+                <h1><strong>DEPARTMENT OF EDUCATION</strong></h1>
+                <hr class="header-hr">
+                <h2><strong>City Schools Division of Biñan</strong></h2>
+            </div>
+            <div id="pstContainer">
+                <p>Philippines Standard Time:<br>
+                    <span id="pst"></span>
+                </p>
+                <img src="{% static 'images/trans.png' %}" alt="Additional Logo" class="pst-logo">
+            </div>
+        </div>
+    </div>
+
+
+<style>
+/* Global Styles */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            min-height: 100vh; /* Ensures the body can expand beyond the viewport height */
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header Styles */
+        header {
+            background: url("{% static 'images/backg.png' %}") no-repeat center center;
+            background-size: cover;
+            padding: 20px;
+            color: white;
+
+        }
+        .container-fluid {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        .header-row {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-left: -200px;
+        }
+        .header-text {
+            text-align: left;
+            flex: 1;
+            margin-left: 0;
+        }
+        .header-text h1 {
+            font-family: 'Amasis MT Pro Black', serif;
+            font-size: 1.8em;
+            margin-bottom: 3px;
+        }
+        .header-text h2 {
+            font-family: 'Bookman Old Style', serif;
+            font-size: 1.5em;
+            margin-top: 3px;
+            margin-bottom: 3px;
+        }
+        .header-hr {
+            width: 550px;
+            height: 3px;
+            background-color: white;
+            margin: 5px 0;
+        }
+        .header-logo {
+            width: 170px;
+            height: 190px;
+            margin-left: 0;
+        }
+        #pstContainer {
+            font-size: 1.1em;
+            margin-left: 0;
+            text-align: right;
+            color: white;
+            margin-top: 100px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        #pst {
+            font-size: 1.1em;   /* Increase font size */
+        }
+        .pst-logo {
+            width: 170px;
+            height: 170px;
+            margin-left: auto;
+            margin-right: -170px;
+            margin-top: -100px;
+        }
+</style>
+
+<script>
+        function updateTime() {
+            const now = new Date();
+            const options = {
+                timeZone: 'Asia/Manila',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            };
+            const timeString = now.toLocaleString('en-PH', options);
+            document.getElementById('pst').textContent = timeString;
+        }
+        setInterval(updateTime, 1000);
+        updateTime(); // Initial call
+</script>

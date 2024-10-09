@@ -1,0 +1,1408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Landing Page</title>
+    <style>
+
+
+        /* Global Styles */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            min-height: 100vh; /* Ensures the body can expand beyond the viewport height */
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+            overflow-x: hidden;
+        }
+
+.container {
+    max-width: 3500px; /* Adjust the width to your preference */
+    margin: 0 auto; /* This centers the container */
+    padding-left: 0; /* Optional: Adds some padding to the left */
+    padding-right: 0; /* Optional: Adds some padding to the right */
+    transform-origin: 0 0; /* Ensures scaling happens from the top-left corner */
+}
+
+
+html {
+    font-size: 100%; /* Sets the base font size */
+}
+/* Add this to ensure all elements respect the box-sizing */
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+* Zoom behavior for text and other scalable content */
+@media screen and (min-width: 600px) {
+    html {
+        font-size: 112.5%; /* Zoom in by 12.5% when the screen width is 600px or more */
+    }
+}
+
+@media screen and (min-width: 900px) {
+    html {
+        font-size: 125%; /* Zoom in by 25% when the screen width is 900px or more */
+    }
+}
+
+
+        /* Header Styles */
+header {
+    background: url("{% static 'images/backg.png' %}") no-repeat center center;
+    background-size: cover;
+    padding: 20px;
+    color: white;
+}
+
+.container-fluid {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.header-row {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-left: -200px;
+}
+
+.header-text {
+    text-align: left;
+    flex: 1;
+    margin-left: 0;
+}
+
+.header-text h1 {
+    font-family: 'Amasis MT Pro Black', serif;
+    font-size: 1.8em;
+    margin-bottom: 3px;
+}
+
+.header-text h2 {
+    font-family: 'Bookman Old Style', serif;
+    font-size: 1.5em;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+.header-hr {
+    width: 550px;
+    height: 3px;
+    background-color: white;
+    margin: 5px 0;
+}
+
+.header-logo {
+    width: 170px;
+    height: 190px;
+    margin-left: 0;
+}
+
+#pstContainer {
+    font-size: 1.1em;
+    margin-left: 0;
+    text-align: right;
+    color: white;
+    margin-top: 100px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+#pst {
+    font-size: 1.1em; /* Increase font size */
+}
+
+.pst-logo {
+    width: 170px;
+    height: 170px;
+    margin-left: auto;
+    margin-right: -170px;
+    margin-top: -100px;
+}
+
+
+
+/* Breaking News Ticker */
+.breaking-news {
+    width: 100%;
+    background-color: #020059; /* Dark blue background */
+    color: white; /* White text */
+    overflow: hidden; /* Hide overflow */
+    position: relative;
+    display: flex;
+
+
+}
+
+.news-ticker {
+    display: inline-block;
+    white-space: nowrap;
+    animation: scroll 47s linear infinite; /* Adjusted speed for smooth scrolling */
+    font-family: 'Arial', sans-serif; /* Choose a clean, readable font */
+    font-size: .9em; /* Adjust font size for readability */
+    line-height: .8; /* Adjust line spacing */
+    letter-spacing: 0.06em; /* Slightly increase letter spacing */
+
+
+}
+
+@keyframes scroll {
+    from {
+        transform: translateX(40%);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+
+
+
+        /* Navigation Menu Styles */
+        nav {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .menu {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            list-style-type: none;
+            padding: 0;
+        }
+        .menu li {
+            display: inline;
+        }
+        .menu a {
+            font-family: 'Canva Sans', sans-serif;
+            text-decoration: none;
+            color: black;
+            font-size: 18px;
+            padding: 10px 20px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+
+        }
+        .menu a:hover {
+            color: #0056b3;
+        }
+
+        /* Horizontal Line Style */
+        .divider {
+            width: 100%;
+            height: 2px;
+            background-color: #000;
+            margin: 20px auto;
+        }
+
+
+        /* Slideshow highlight events */
+.slideshow-container {
+    position: relative;
+    max-width: 100%; /* Fit to screen */
+    height: 500px;
+    margin: auto;
+}
+
+/* Hide all slides by default */
+.mySlides {
+    display: none;
+     height: 100%;
+     width: 100%;
+    transition: opacity 0.6s ease-in-out; /* Fade transition effect */
+}
+
+/* Image styling */
+img {
+       height: 100%; /* Ensures the image fills the height of the container */
+            width: 100%; /* Maintains aspect ratio */
+            display: block;
+            margin-left: -160;
+}
+
+/* Previous and next buttons */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0; /* Right rounded for next button */
+    user-select: none; /* Prevent text selection */
+}
+
+/* Positioning for next and previous buttons */
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px; /* Left rounded for prev button */
+}
+
+/* Hover effect for navigation buttons */
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8); /* Dark background on hover */
+}
+
+/* Fade effect for the slides */
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from { opacity: .4; }
+    to { opacity: 1; }
+}
+
+
+
+
+
+       /* Container for the 'What's New' section */
+.whats-new-container {
+    display: flex;
+    flex-direction: column;
+    align-items: left; /* Center the text horizontally */
+    margin: 20px;
+    text-align: left; /* Center the text within the container */
+}
+
+
+/* Styling for the 'What's New' text */
+.whats-new {
+    text-align: left; /* Center the text within the container */
+    font-family: 'Bookman Old Style', serif;
+    font-size: 28px;
+    color: black;
+    margin-left: 330px; /* Remove any extra margin */
+    margin-top: 10px;
+}
+
+/* Divider line below the 'What's New' text */
+.whats-new-divider {
+            width: 103%;
+            height: 1px;
+            background-color: #000;
+            margin: 10px;
+            margin-left: -22px;
+            margin-top: 6px;
+
+}
+
+
+     /* Navigation Bar Styles */
+.side-nav {
+    top: 20px;
+    width: 300px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    margin-left: 20px;
+    margin-top: -515px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.second-nav {
+    margin-top: -370px; /* Add margin to separate it from the first nav */
+}
+
+.side-nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.side-nav li {
+    margin: 10px 0;
+}
+
+.side-nav a {
+    text-decoration: none;
+    color: black;
+    font-family: 'Aptos', sans-serif;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.side-nav a:hover {
+    color: blue;
+}
+
+.second-nav li:first-child {
+    font-weight: bold;
+    font-size: 18px; /* Adjust font size for the title */
+}
+
+/* Adjust wrapper for the side navigation */
+.wrapper {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 20px;
+    gap: 40px; /* Adjust gap to provide space between nav and articles */
+}
+
+
+.DSDO_title {
+    width: 280px;
+    font-family: 'Aptos', sans-serif; /* Ensure font-family is correct */
+    font-weight: 700; /* Use '700' for bold text */
+    margin-bottom: 30px;
+    font-size: 17px;
+    text-align: center;
+    margin-top: -10px;
+    margin-left: 20px;
+
+}
+
+.DSO {
+    width: 300px;
+    font-family: 'Aptos', sans-serif; /* Ensure font-family is correct */
+    font-size: 15px;
+    text-align: left;
+    margin-top: -10px;
+    margin-left: 20px;
+    margin-bottom: 350px;
+}
+
+.nav-photo {
+     width: 300px; /* Default width */
+    height: auto; /* Maintain aspect ratio */
+    margin-top: 30px; /* Space above the photo */
+    margin-left: 20px;
+    }
+
+
+
+
+
+.facebook-plugin-container {
+            width: 405px; /* Set the desired fixed width */
+            height: 450;
+            margin-left: auto;
+            margin-right: 18px;
+            margin-top: -745px;
+            float: right;
+        }
+
+        .fb-page {
+            width: 100%; /* Ensure the plugin content fills the container width */
+        }
+
+
+
+
+
+      .articles-container {
+     display: flex;
+     flex-direction: column; /* Arrange articles vertically */
+     gap: 20px; /* Space between articles */
+     align-items: center; /* Center the articles horizontally, if desired */
+     margin-top: -1216px;
+     margin-right: 90px;
+     margin-bottom: 50px;
+        }
+
+
+
+        .article {
+            width: 710px; /* Set the width of each article */
+            height: 240px; /* Set the height of each article */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            position: relative;
+        }
+
+        .article h2 {
+           font-family: Arial, sans-serif;
+            margin-top: 180px;
+            margin-left: 5px;
+            font-size: 20px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .article p {
+            font-size: 14px;
+            margin: 0;
+        }
+        .article-0 {
+            background-image: url('{% static "images/a4.png" %}');
+        }
+        .article-1 {
+            background-image: url('{% static "images/a1.jpg" %}'); /* Replace with actual image */
+        }
+        .article-2 {
+            background-image: url('{% static "images/a2.jpg" %}'); /* Replace with actual image */
+        }
+        .article-3 {
+            background-image: url('{% static "images/a3.jpg" %}'); /* Replace with actual image */
+        }
+
+
+
+.calendar {
+    width: 1000px;
+    height: 505px;
+    margin-left: -370px;
+    margin-top: 60px;
+    background-color: #020059;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    position: relative;
+    background-image: url("{% static 'images/bgcal4.png' %}");
+    background-size: cover; /* This ensures the image covers the entire calendar area */
+    background-position: center; /* Centers the image */
+}
+
+
+
+        .month {
+            display: flex;
+            justify-content: space-between;
+            font-size: 37px;
+            align-items: center;
+            padding: 22px 50px;
+            background-image: url("{% static 'images/bgcal3.png' %}");
+            color: white;
+            position: relative;
+             font-weight: bold;
+             text-align: center;
+        }
+
+        .weekdays {
+            font-size: 27px;
+            display: flex;
+            background-color:#C2C2C2
+            padding: 22px 22px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .weekdays div {
+            flex: 1;
+            text-align: center;
+            font-weight: bold;
+            color: #5a5a5a;
+        }
+
+
+
+        .days {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0px;
+
+
+
+
+        }
+
+        .days div {
+            width: calc(100% / 7);
+            height: 77px;
+            line-height: 100px;
+            box-sizing: border-box;
+            text-align: right;
+            padding: 20px;
+            cursor: pointer;
+            border: 1px solid #ddd;
+            transition: background-color 0.3s;
+            position: relative;
+
+
+
+        }
+
+/* Alternating row colors with 10% opacity */
+.days div:nth-child(7n+1):nth-child(-n+7),
+.days div:nth-child(7n+15):nth-child(-n+21),
+.days div:nth-child(7n+29):nth-child(-n+35) {
+    background-color: rgba(255, 255, 255, 0.1); /* White with 10% opacity */
+}
+
+.days div:nth-child(n+8):nth-child(-n+14),
+.days div:nth-child(n+22):nth-child(-n+28) {
+    background-color: rgba(1, 1, 1, 0.1); /* Gray (black with 10% opacity) */
+}
+
+/* Hover effect on days to darken regardless of row color */
+.days div:hover {
+    background-color: rgba(0, 0, 0, 0.5) !important; /* Darker effect on hover, overriding other styles */
+}
+
+
+
+
+
+.days div span {
+    position: absolute; /* Absolute positioning for the date */
+    top: 5px; /* Push the date number to the top */
+    right: 20px; /* Push the date number to the right */
+    font-size: 24px; /* Adjust font size */
+    font-weight: bold;
+}
+
+ .month .prev,
+        .month .next {
+        margin-top: 170px;
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 10px;
+            position: absolute;
+            top: -150%;
+            transform: translateY(-50%);
+        }
+ .month .prev {
+            left: 10px;
+        }
+
+        .month .next {
+            right: 10px;
+        }
+
+
+
+ /* Styles for displaying event details under the calendar */
+.event-display {
+    width: 450px;
+    height: 505px;
+    margin-top: -524px; /* Adjusts box positioning */
+    margin-left: 1148px;
+    padding: 20px; /* Adjust inner spacing */
+    background-color: rgba(65, 105, 225, 0.15); /* 15% opacity dark blue */
+    border-radius: 8px;
+    font-size: 23px; /* Adjusts the font size */
+    color: #333;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start; /* Aligns text to the left */
+    box-sizing: border-box;
+    overflow: auto; /* Adds a scrollbar if content overflows */
+    white-space: pre-wrap; /* Handles text wrapping */
+    line-height: 1.5; /* Adjusts vertical spacing between lines */
+    letter-spacing: 0.5px; /* Adjusts horizontal spacing between letters */
+}
+
+.event-display .event-date {
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 24px; /* Larger font for the date */
+    line-height: 1.8; /* Increased spacing between lines */
+    letter-spacing: 0.8px; /* Increased spacing between letters */
+}
+
+/* Adjusts the general spacing and first-line indentation for the text */
+.event-display p {
+    margin-top: 10px; /* Adjusts spacing above the paragraph */
+    margin-bottom: 10px; /* Adjusts spacing below the paragraph */
+    padding-left: 10px; /* Adds padding inside the container */
+    text-indent: 15px; /* Indents the first line */
+}
+
+
+
+
+
+
+
+/* Highlight Days with Events */
+.days .event-day span {
+    background-color: blue;
+    width: 15%;
+    height: 30%;
+    border-radius: 100%; /* Makes the shape a circle */
+
+
+}
+
+
+
+
+        /* Footer Styles */
+        footer {
+            background: url("{% static 'images/footer.png' %}") no-repeat center center;
+            background-size: cover;
+            padding: 20px 30px;
+            color: #ffffff;
+            font-size: 14px;
+            width: 100%;
+            box-sizing: border-box;
+            position: relative;
+            font-family: 'Canva Sans', sans-serif;
+
+        }
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            align-items: center; /* Center align items */
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        .contact-info {
+            font-size: 16px;
+            text-align: left;
+            margin-left: -70px;
+            position: relative;
+            z-index: 1;
+        }
+        .contact-info p {
+         margin-bottom: -10px; /* Adjust this value to increase or decrease spacing */
+         }
+
+        .contact-info img.contact-icon {
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+        .social-media {
+            text-align: right;
+            margin-right: -70px;
+            position: relative;
+            z-index: 1;
+        }
+        .social-media h4 {
+            font-size: 20px;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+        .social-icons {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+        .social-icons img {
+            width: 40px;
+            height: 40px;
+        }
+        .copyright {
+            text-align: center;
+            background-color: #020059;
+            padding: -10px 0; /* Adjusted padding */
+            color: #ffffff;
+            border-radius: 5px;
+            width: 100%;
+            position: absolute; /* Changed to relative */
+            bottom: 0;
+            left: 0;
+            bo-sizing: border-box;
+            margin: 0;
+            font-size: 14px;
+        }
+
+        /* Middle Section with Logos and Sentence */
+        .middle-logos {
+            text-align: center;
+            flex: 1;
+            margin: 10px 10;
+            right: -80px;
+        }
+        .logos-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .footer-logo {
+            width: 90px;
+            height: 90px;
+        }
+        .short-sentence {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #ffffff;
+        }
+
+       /* Useful Links Styles */
+    .useful-links {
+    font-family: 'Canva Sans', sans-serif;
+    font-size: 16px;
+    text-align: center;
+    left: 150px;
+    position: relative;
+    z-index: 1;
+}
+
+.useful-links h4 {
+    font-family: 'Canva Sans', sans-serif;
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.useful-links ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px;
+}
+
+.useful-links ul li {
+    margin-bottom: 3px;
+}
+
+.useful-links ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.useful-links ul li a:hover {
+    color: #dddddd;
+}
+
+
+
+
+
+       /* News Slideshow Styles 3 pictures event 'NEWS' */
+.news-container {
+    position: relative;
+    max-width: 58%; /* Adjust the width to your preference */
+    height: 450px; /* Desired height */
+    margin: auto;
+    margin-top: -45px;
+    margin-right: -440px;
+    overflow: hidden; /* Hide any overflow from the container */
+}
+
+.myNews {
+    display: none;
+    height: 100%;
+    width: 48%;
+}
+
+.myNews img {
+    width: 100%;
+    height: 100%; /* Maintain aspect ratio */
+    object-fit: cover; /* Ensures image scales nicely */
+    display: block;
+}
+
+/* Navigation Buttons */
+.p, .n {
+    cursor: pointer;
+    position: absolute;
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Align buttons vertically at the center */
+    width: auto;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 3px;
+    background-color: rgba(0, 0, 0, 0.5); /* Add semi-transparent background for better visibility */
+    user-select: none;
+}
+
+/* Specific to the previous button */
+.p {
+    left: 10px; /* Adjust the distance from the left edge */
+}
+
+/* Specific to the next button */
+.n {
+    right: 468px;
+}
+
+/* Hover effect for both buttons */
+.p:hover, .n:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Optional: Fade animation for images */
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {opacity: 0.4;}
+    to {opacity: 1;}
+}
+
+
+    </style>
+
+    <!-- Header Section -->
+    <header>
+
+        <div class="container-fluid">
+            <div class="header-row">
+                <img src="{% static 'images/logo.png' %}" alt="Logo" class="header-logo">
+                <div class="header-text">
+                    <h1><strong>DEPARTMENT OF EDUCATION</strong></h1>
+                    <hr class="header-hr">
+                    <h2><strong>City Schools Division of Biñan</strong></h2>
+                </div>
+                <div id="pstContainer">
+                    <p>Philippines Standard Time:<br>
+                        <span id="pst"></span>
+                    </p>
+                    <img src="{% static 'images/trans.png' %}" alt="Additional Logo" class="pst-logo">
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+<body>
+
+ <!-- Breaking News Ticker -->
+    <div class="breaking-news">
+        <div class="news-ticker" id="newsTicker"></div>
+    </div>
+
+    <!-- Rest of your content -->
+
+    <script src="{% static 'js/script.js' %}"></script>
+
+
+<div class="container">
+    <!-- Navigation Menu -->
+    <nav>
+        <ul class="menu">
+            <li><a href="{% url 'index' %}">HOME</a></li>
+            <li><a href="{% url 'about' %}">ABOUT</a></li>
+            <li><a href="{% url 'news' %}">NEWS</a></li>
+            <li><a href="{% url 'issuances' %}">ISSUANCES</a></li>
+            <li><a href="{% url 'qms' %}">QMS</a></li>
+            <li><a href="{% url 'procurement' %}">PROCUREMENT</a></li>
+            <li><a href="{% url 'learningresources' %}">LEARNING RESOURCES</a></li>
+            <li><a href="{% url 'research' %}">RESEARCH</a></li>
+            <li><a href="{% url 'contact' %}">CONTACT US</a></li>
+        </ul>
+    </nav>
+
+    <!-- Divider Line -->
+    <div class="divider"></div>
+
+
+<!-- Slideshow Section -->
+<div class="slideshow-container">
+    <div class="mySlides fade">
+        <img src="{% static 'images/p1.jpg' %}" style="width:100%">
+    </div>
+    <div class="mySlides fade">
+        <img src="{% static 'images/p2.jpg' %}" style="width:100%">
+    </div>
+    <div class="mySlides fade">
+        <img src="{% static 'images/p3.jpg' %}" style="width:100%">
+    </div>
+
+    <!-- Navigation Buttons -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+
+<script src="script.js"></script>
+
+
+
+    <!-- "What's New" Section -->
+<div class="whats-new-container">
+    <div class="whats-new-divider"></div>
+    <p class="whats-new">What's New ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ Announcement</p>
+
+</div>
+
+
+    <!-- News Section -->
+    <div class="news-container">
+        <div class="myNews fade">
+            <img src="{% static 'images/an1.jpg' %}" style="width:100%">
+        </div>
+        <div class="myNews fade">
+            <img src="{% static 'images/an22.jpg' %}" style="width:100%">
+        </div>
+        <div class="myNews fade">
+            <img src="{% static 'images/an33.jpg' %}" style="width:100%">
+        </div>
+
+        <!-- Navigation Buttons -->
+        <a class="p" onclick="plusNews(-1)">&#10094;</a>
+        <a class="n" onclick="plusNews(1)">&#10095;</a>
+    </div>
+
+
+     <div class="wrapper">
+        <!-- Side Navigation -->
+        <div class="side-nav">
+            <ul>
+                <li><a href="#announcement">Announcement</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#achievements">Achievements</a></li>
+            </ul>
+        </div>
+    </div>
+     <div class="side-nav second-nav">
+        <ul>
+            <li><strong>Useful Links</strong></li> <!-- Title text, not a link -->
+            <li><a href="#careers">Careers</a></li>
+            <li><a href="#bids">Bids Opportunities</a></li>
+            <li><a href="#division-memo">Division Memorandum</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+        </ul>
+    </div>
+
+    <div class="nav-content">
+    <img src="{% static 'images/qr.jpg' %}" alt="Descriptive Text" class="nav-photo">
+
+    <div class="DSDO_title">
+        <h3><strong>DSDO Binan Client Satisfaction Measurement (CSM)</strong></h3>
+    </div>
+
+    <div class="DSO">
+        <p>The Client Satisfaction (CSM) tracks the customer experience of government offices. Your feedback on your recently concluded transaction will help this office provide better service. Personal information shared will be kept confidential and you always have the option to not answer this form.</p>
+        <p><strong>ANTI-RED TAPE AUTHORITY</strong></p>
+        <p>PSA Approval No. ARTA-2242-3</p>
+    </div>
+</div>
+
+
+
+
+
+<div class="facebook-plugin-container">
+                <div id="fb-root"></div>
+                <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v20.0" nonce="IeBvJJmp"></script>
+                <div class="fb-page" data-href="https://www.facebook.com/depedtayobinan" data-tabs="timeline" data-width="500" data-height="500" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                    <blockquote cite="https://www.facebook.com/depedtayobinan" class="fb-xfbml-parse-ignore">
+                        <a href="https://www.facebook.com/depedtayobinan">DepEd Tayo Biñan City</a>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+    <!-- Articles Section -->
+<div class="articles-container">
+    <div class="article article-0">
+        <div>
+            <h2>Program Implementation Review and Plan Adjustments cum Strategic Planning for Fiscal Year 2024</h2>
+        </div>
+    </div>
+    <div class="article article-2">
+        <div>
+            <h2>125th Philippine Independence Day Celebration</h2>
+        </div>
+    </div>
+    <div class="article article-3">
+        <div>
+            <h2>SY 2022-2023 Total LIS Enrollment</h2>
+        </div>
+    </div>
+
+     <div class="article article-1">
+        <div>
+            <h2>SY 2022-2023 Total LIS Enrollment</h2>
+        </div>
+    </div>
+
+
+
+
+ <div class="calendar">
+        <div class="month">
+            <button class="prev" onclick="prevMonth()">&#10094;</button>
+            <div id="monthYear"></div>
+            <button class="next" onclick="nextMonth()">&#10095;</button>
+        </div>
+        <div class="weekdays">
+            <div>Sun</div>
+            <div>Mon</div>
+            <div>Tue</div>
+            <div>Wed</div>
+            <div>Thu</div>
+            <div>Fri</div>
+            <div>Sat</div>
+        </div>
+        <div class="days" id="days"></div>
+    </div>
+
+
+
+<div class="event-display" id="eventDisplay">
+    <div class="event-date">TODAY'S EVENT:</div>
+    <div class="event-list">No events today.</div>
+</div>
+    </div>
+
+
+<script src="script.js"></script>
+
+
+
+</body>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-container">
+            <!-- Contact Addresses -->
+            <div class="footer-section contact-info">
+                <p>For Contact:</p>
+                <p><img src="{% static 'images/em.png' %}" alt="Email" class="contact-icon"> deped.binancity@deped.gov.ph</p>
+                <p><img src="{% static 'images/telep.png' %}" alt="Telephone" class="contact-icon"> 511 - 4143 | 511 - 8620</p>
+                <p><img src="{% static 'images/telep.png' %}" alt="Telephone" class="contact-icon"> 511 - 8746 | 511 - 4191</p>
+            </div>
+
+            <!-- Middle Section with Logos and Sentence -->
+            <div class="footer-section middle-logos">
+                <div class="logos-container">
+                    <img src="{% static 'images/logo1.png' %}" alt="Logo 1" class="footer-logo">
+                    <img src="{% static 'images/logo2.png' %}" alt="Logo 2" class="footer-logo">
+                    <img src="{% static 'images/logo.png' %}" alt="Logo 3" class="footer-logo">
+                    <img src="{% static 'images/logo4.png' %}" alt="Logo 4" class="footer-logo">
+                </div>
+                <p class="short-sentence">All content is in the public domain unless otherwise stated.</p>
+            </div>
+
+             <!-- Useful Links Section -->
+        <div class="footer-section useful-links">
+            <h4>Useful Links</h4>
+            <ul>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">Bids Opportunities</a></li>
+                <li><a href="#">Division Memorandum</a>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Developer</a></li>
+            </ul>
+        </div>
+
+
+            <!-- Social Media Links -->
+            <div class="footer-section social-media">
+                <h4>Follow Us</h4>
+                <div class="social-icons">
+                    <a href="#"><img src="{% static 'images/facebook.png' %}" alt="Facebook"></a>
+                    <a href="#"><img src="{% static 'images/twitter.png' %}" alt="Twitter"></a>
+                    <a href="#"><img src="{% static 'images/insta.png' %}" alt="Instagram"></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; DEPED | DIVISION BINAN</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for current time and slideshow -->
+    <script>
+
+
+        function updateTime() {
+            const now = new Date();
+            const options = {
+                timeZone: 'Asia/Manila',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            };
+            const timeString = now.toLocaleString('en-PH', options);
+            document.getElementById('pst').textContent = timeString;
+        }
+
+
+        setInterval(updateTime, 1000);
+        updateTime(); // Initial call
+
+      let slideIndex = 0;
+let isSliding = false; // Flag to control slide transition
+
+// Show the first slide on page load
+showSlides();
+
+// Function to move to the next/previous slide
+function plusSlides(n) {
+    if (!isSliding) { // Check if a slide transition is already happening
+        isSliding = true; // Set flag to true during transition
+        showSlides(slideIndex += n);
+        setTimeout(() => {
+            isSliding = false; // Reset flag after transition duration
+        }, 600); // Duration should match the CSS transition time (600ms)
+    }
+}
+
+// Function to display the current slide
+function showSlides(n) {
+    let slides = document.getElementsByClassName("mySlides");
+
+    // Wrap around slide index if it goes out of bounds
+    if (n >= slides.length) {
+        slideIndex = 0;
+    }
+    if (n < 0) {
+        slideIndex = slides.length - 1;
+    }
+
+    // Hide all slides initially
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+
+    // Display the current slide
+    slides[slideIndex].style.display = "block";
+}
+
+// Optional: Automatic slideshow that moves to the next slide every 5 seconds
+setInterval(function() {
+    if (!isSliding) {
+        plusSlides(1);
+    }
+}, 5000); // Change image every 5 seconds
+
+
+
+
+
+const monthNames = [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+];
+
+let currentMonth = new Date().getMonth();
+let currentYear = new Date().getFullYear();
+let today = new Date();
+
+// Define events with times
+const events = {
+    "2024-08-25": [
+        { time: "10:00 AM", description: "Event 1: Meeting" },
+        { time: "02:00 PM", description: "Event 2: Workshop" }
+    ],
+    "2024-08-30": [
+        { time: "", description: "No specific events" }
+    ],
+    "2024-09-04": [
+        { time: "09:00 AM", description: "Event 1: Meeting" },
+        { time: "03:00 PM", description: "Event 2: Workshop" }
+    ],
+    "2024-09-06": [
+        { time: "11:00 AM", description: "Workshop" }
+    ]
+};
+
+// Function to display events for a specific date
+function showEvents(date) {
+    const eventsList = events[date] || [];
+    const eventDisplay = document.getElementById("eventDisplay");
+    const eventListDiv = eventDisplay.querySelector(".event-list");
+
+    if (eventsList.length) {
+        // Clear the previous events
+        eventListDiv.innerHTML = "";
+
+        // Create a bulleted list
+        const ul = document.createElement("ul");
+
+        // Loop through events and add them to the list
+        eventsList.forEach(event => {
+            const li = document.createElement("li");
+
+            // Format event with time (if available) and description
+            li.textContent = event.time ? `${event.time} - ${event.description}` : event.description;
+
+            // Add each event to the unordered list
+            ul.appendChild(li);
+        });
+
+        // Append the list to the event display div
+        eventListDiv.appendChild(ul);
+    } else {
+        eventListDiv.textContent = "No events today.";
+    }
+}
+
+// Function to get today's date in the format YYYY-MM-DD
+function getTodayDate() {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+}
+
+// Function to get the next upcoming event
+function getNextEvent() {
+    const todayDate = getTodayDate();
+    const eventDates = Object.keys(events).sort();
+
+    for (let date of eventDates) {
+        if (date >= todayDate) {
+            return { date: date, events: events[date] };
+        }
+    }
+    return null;
+}
+
+
+const headlineArticles = [
+    "RECENT EVENTS",
+    "August 20, 2024: Sharing success stories from South and North, SDO Binan spreads the NQMS worth!",
+    "August 28, 2024: SDO Binan confirms ALS Partnership with Prime Reformation Center of the City",
+    "August 28, 2024: 4 out of 11 Gawad Patnugot Stage 2 Qualifiers successfully hurdled the document validation process from August 19-22, 2024."
+];
+
+function renderCalendar(month, year) {
+    const daysContainer = document.getElementById("days");
+    const monthYear = document.getElementById("monthYear");
+    daysContainer.innerHTML = "";
+
+    const firstDay = new Date(year, month).getDay();
+    const daysInMonth = 32 - new Date(year, month, 32).getDate();
+    const today = new Date(); // Get today's date
+
+    monthYear.textContent = `${monthNames[month]} ${year}`;
+
+    // Empty cells for the first days
+    for (let i = 0; i < firstDay; i++) {
+        daysContainer.innerHTML += `<div></div>`;
+    }
+
+    // Create the day cells with the date in the upper-right corner
+    for (let i = 1; i <= daysInMonth; i++) {
+        const dateKey = `${year}-${String(month + 1).padStart(2, "0")}-${String(i).padStart(2, "0")}`;
+        const dayDiv = document.createElement("div");
+
+        // Wrap the date number in a span for better control
+        dayDiv.innerHTML = `<span>${i}</span>`;
+        dayDiv.onclick = () => showEvents(dateKey);
+
+        // Highlight the current day
+        if (year === today.getFullYear() && month === today.getMonth() && i === today.getDate()) {
+            dayDiv.classList.add("current-day");
+        }
+
+        // Highlight event days
+        if (events[dateKey]) {
+            dayDiv.classList.add("event-day");
+        }
+
+        daysContainer.appendChild(dayDiv);
+    }
+}
+
+function updateNewsTicker() {
+    const nextEventInfo = getNextEvent();
+    let combinedNews = '';
+
+    if (nextEventInfo) {
+        const { date, events } = nextEventInfo;
+        const formattedDate = new Date(date).toLocaleDateString('en-PH', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+        });
+
+        // Map events to a readable format
+        combinedNews = events.map(event => {
+            const time = event.time ? `${event.time} - ` : '';
+            return `${formattedDate}: ${time}${event.description}`;
+        }).join(' | ');
+    } else {
+        // If no event, show a notice
+        combinedNews = 'No event today';
+    }
+
+    // Append headline articles after the events or notice
+    combinedNews += combinedNews ? ` | ${headlineArticles.join(' | ')}` : headlineArticles.join(' | ');
+
+    const newsTicker = document.getElementById('newsTicker');
+    newsTicker.innerHTML = `<p>LATEST UPDATE: ${combinedNews}</p>`;
+}
+
+function prevMonth() {
+    currentMonth = currentMonth === 0 ? 11 : currentMonth - 1;
+    currentYear = currentMonth === 11 ? currentYear - 1 : currentYear;
+    renderCalendar(currentMonth, currentYear);
+}
+
+function nextMonth() {
+    currentMonth = currentMonth === 11 ? 0 : currentMonth + 1;
+    currentYear = currentMonth === 0 ? currentYear + 1 : currentYear;
+    renderCalendar(currentMonth, currentYear);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    renderCalendar(currentMonth, currentYear);
+    showEvents(getTodayDate()); // Display today's events
+    updateNewsTicker();
+});
+
+
+        let newsIndex = 0;
+showNews(newsIndex); // Initial call
+
+// Function to control the slideshow display
+function showNews(n) {
+    let news = document.getElementsByClassName("myNews");
+
+    if (n > news.length - 1) {
+        newsIndex = 0; // Reset to the first image if it exceeds the length
+    }
+    if (n < 0) {
+        newsIndex = news.length - 1; // Go to the last image if less than 0
+    }
+
+    for (let i = 0; i < news.length; i++) {
+        news[i].style.display = "none"; // Hide all images
+    }
+    news[newsIndex].style.display = "block"; // Show the current image
+}
+
+// Function to increment or decrement the current index
+function plusNews(n) {
+    showNews(newsIndex += n);
+}
+
+// Automatic slideshow transition
+function autoShowNews() {
+    plusNews(1); // Move to the next slide
+    setTimeout(autoShowNews, 10000); // Change image every 10 seconds
+}
+
+autoShowNews(); // Initial call to start the auto-slideshow
+
+
+    </script>
+
+</body>
+</html>

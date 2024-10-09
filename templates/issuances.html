@@ -1,0 +1,322 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+{% load static %}
+{% load static %}
+<header>
+     {% include 'header.html' %}
+</header>
+
+<head>
+    <title>Learning resources</title>
+     <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+          max-width: 3500px; /* Adjust the width to your preference */
+    margin: 0 auto; /* This centers the container */
+    padding-left: 0; /* Optional: Adds some padding to the left */
+    padding-right: 0; /* Optional: Adds some padding to the right */
+    transform-origin: 0 0; /* Ensures scaling happens from the top-left corner */
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+
+        .title {
+    text-align: center; /* Centers the title horizontally */
+    margin-top: 20px; /* Adds space above the title */
+    margin-bottom: 40px; /* Adds space below the title */
+}
+
+.title h1 {
+    font-size: 1.5em; /* Adjust the size of the text */
+    font-family: 'Montserrat', sans-serif; /* Modern font */
+    color: #333; /* Title color */
+    text-transform: uppercase; /* Capitalizes all letters */
+    letter-spacing: 2px; /* Adds spacing between the letters */
+    font-weight: bold; /* Makes the title bold */
+    position: relative; /* Allows for pseudo-element styling */
+
+    margin-top: -20px;
+}
+
+.title h1::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background-color: #4fa49a; /* Color for the line underneath */
+    margin: 10px auto 0; /* Centers the line under the title */
+    border-radius: 2px; /* Slight rounding of the line */
+}
+
+
+   .card {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin: 20px;
+            transition: transform 0.3s ease;
+            /* Adjust card size here */
+            width: var(--card-width, 30%);
+            height: var(--card-height, auto);
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+        }
+
+        .card-content {
+            padding: 5px;
+            justify-content: center;
+        }
+
+        .card-title {
+            font-size: 1.5em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .card-description {
+            font-size: 1em;
+            color: #777;
+            margin-bottom: 20px;
+        }
+
+        .card-button {
+            display: block;
+            text-align: center;
+            padding: 10px;
+            background: linear-gradient(135deg, #4fa49a, #3f869b);
+            color: #fff;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+
+        .card-button {
+            display: block;
+            text-align: center;
+            padding: 10px;
+            background: linear-gradient(135deg, #4fa49a, #3f869b);
+            color: #fff;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s ease;
+
+        }
+
+         .card-button:hover {
+            background: linear-gradient(135deg, #3f869b, #4fa49a);
+        }
+
+        @media (max-width: 1000px) {
+            .card {
+                width: var(--card-width-small, 45%);
+            }
+        }
+
+        @media (max-width: 700px) {
+            .card {
+                width: var(--card-width-smallest, 100%);
+            }
+        }
+    </style>
+</head>
+
+    <!-- Navigation Menu (can be copied from your main page) -->
+    <nav>
+        <ul class="menu">
+            <li><a href="{% url 'index' %}">HOME</a></li>
+            <li><a href="{% url 'about' %}">ABOUT</a></li>
+            <li><a href="{% url 'news' %}">NEWS</a></li>
+            <li><a href="{% url 'issuances' %}">ISSUANCES</a></li>
+            <li><a href="{% url 'qms' %}">QMS</a></li>
+            <li><a href="{% url 'procurement' %}">PROCUREMENT</a></li>
+            <li><a href="{% url 'learningresources' %}">LEARNING RESOURCES</a></li>
+            <li><a href="{% url 'research' %}">RESEARCH</a></li>
+            <li><a href="{% url 'contact' %}">CONTACT US</a></li>
+        </ul>
+    </nav>
+    <!-- Divider Line -->
+    <div class="divider"></div>
+
+<body>
+
+ <!-- Existing content omitted for brevity -->
+<div class="title">
+    <h1>Self Learning Modules</h1>
+</div>
+
+
+
+    <div class="container">
+        <div class="card" style="--card-width: 20%; --card-height: 5%;">
+            <img src="{% static 'images/q1.png' %}" alt="Quarter 1 Image">
+            <div class="card-content">
+                <h2 class="card-title">Quarter 1</h2>
+                <p class="card-description">This section contains Quarter 1 learning materials for Kinder to Grade 12.</p>
+                <a href="#" class="card-button">View All</a>
+            </div>
+        </div>
+
+        <div class="card" style="--card-width: 20%; --card-height: 5%;">
+            <img src="{% static 'images/q2.png' %}" alt="Quarter 2 Image">
+            <div class="card-content">
+                <h2 class="card-title">Quarter 2</h2>
+                <p class="card-description">This section contains Quarter 2 learning materials for Kinder to Grade 12.</p>
+                <a href="#" class="card-button">View All</a>
+            </div>
+        </div>
+
+        <div class="card" style="--card-width: 20%; --card-height: 5%;">
+            <img src="{% static 'images/q3.png' %}" alt="Quarter 3 Image">
+            <div class="card-content">
+                <h2 class="card-title">Quarter 3</h2>
+                <p class="card-description">This section contains Quarter 3 learning materials for Kinder to Grade 12.</p>
+                <a href="#" class="card-button">View All</a>
+            </div>
+        </div>
+
+        <!-- Additional cards can be added similarly -->
+        <div class="card" style="--card-width: 20%; --card-height: 5%;">
+            <img src="{% static 'images/q4.png' %}" alt="Quarter 3 Image">
+            <div class="card-content">
+                <h2 class="card-title">Quarter 3</h2>
+                <p class="card-description">This section contains Quarter 3 learning materials for Kinder to Grade 12.</p>
+                <a href="#" class="card-button">View All</a>
+            </div>
+        </div>
+       <div class="card" style="--card-width: 20%; --card-height: 5%;">
+            <img src="{% static 'images/dd.png' %}" alt="Quarter 3 Image">
+            <div class="card-content">
+                <h2 class="card-title">Quarter 3</h2>
+                <p class="card-description">This section contains Quarter 3 learning materials for Kinder to Grade 12.</p>
+                <a href="#" class="card-button">View All</a>
+            </div>
+        </div>
+        <div class="card" style="--card-width: 20%; --card-height: 5%;">
+            <img src="{% static 'images/als.png' %}" alt="Quarter 3 Image">
+            <div class="card-content">
+                <h2 class="card-title">Quarter 3</h2>
+                <p class="card-description">This section contains Quarter 3 learning materials for Kinder to Grade 12.</p>
+                <a href="#" class="card-button">View All</a>
+            </div>
+        </div>
+      <div class="card" style="--card-width: 20%; --card-height: 5%;">
+            <img src="{% static 'images/madrasah.png' %}" alt="Quarter 3 Image">
+            <div class="card-content">
+                <h2 class="card-title">Quarter 3</h2>
+                <p class="card-description">This section contains Quarter 3 learning materials for Kinder to Grade 12.</p>
+                <a href="#" class="card-button">View All</a>
+            </div>
+        </div>
+
+
+</div>
+</body>
+
+ <style>
+  /* Global Styles */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            min-height: 100vh; /* Ensures the body can expand beyond the viewport height */
+            display: flex;
+            flex-direction: column;
+        }
+
+        body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: auto;
+}
+
+
+
+
+html {
+    font-size: 100%; /* Sets the base font size */
+}
+/* Add this to ensure all elements respect the box-sizing */
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+* Zoom behavior for text and other scalable content */
+@media screen and (min-width: 600px) {
+    html {
+        font-size: 112.5%; /* Zoom in by 12.5% when the screen width is 600px or more */
+    }
+}
+
+@media screen and (min-width: 900px) {
+    html {
+        font-size: 125%; /* Zoom in by 25% when the screen width is 900px or more */
+    }
+}
+    <!-- About Us Content -->
+
+   /* Navigation Menu Styles */
+        nav {
+            text-align: center;
+
+        }
+        .menu {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            list-style-type: none;
+            padding: 0;
+            margin-top: 35px;
+
+        }
+        .menu li {
+            display: inline;
+        }
+        .menu a {
+            font-family: 'Canva Sans', sans-serif;
+            text-decoration: none;
+            color: black;
+            font-size: 18px;
+            padding: 10px 20px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+
+
+        }
+        .menu a:hover {
+            color: #0056b3;
+        }
+
+        /* Horizontal Line Style */
+        .divider {
+            width: 90%;
+            height: 2px;
+            background-color: #000;
+            margin: 20px auto;
+        }
+ </style>
+
+<footer>
+     {% include 'footer.html' %}
+    </footer>

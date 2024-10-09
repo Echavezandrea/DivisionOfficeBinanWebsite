@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+
+    <!-- Adding Google Fonts for advanced design -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
+        /* Global Styles */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+            overflow-x: hidden;
+
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .container {
+            max-width: 3500px;
+            margin: 0 auto;
+            padding-left: 0;
+            padding-right: 0;
+            transform-origin: 0 0;
+        }
+
+        html {
+            font-size: 100%;
+        }
+
+        *, *::before, *::after {
+            box-sizing: inherit;
+        }
+
+        @media screen and (min-width: 600px) {
+            html {
+                font-size: 112.5%;
+            }
+        }
+
+        @media screen and (min-width: 900px) {
+            html {
+                font-size: 125%;
+            }
+        }
+
+        /* Navigation Menu Styles */
+        nav {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .menu {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu li {
+            display: inline;
+        }
+
+        .menu a {
+            font-family: 'Poppins', sans-serif;
+            text-decoration: none;
+            color: black;
+            font-size: 20px;
+            padding: 10px 20px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        .menu a:hover {
+            color: #0056b3;
+        }
+
+        /* Single Divider Line Style */
+        .divider {
+            width: 100%;
+            height: 2px;
+            background-color: #000;
+            margin: 20px 0;
+        }
+
+        /* Image and Map Container */
+        .image-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 40px auto;
+        }
+
+        /* Keep the hover effect only for the CMS photo */
+        #imageZoom {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        #imageZoom:hover {
+            transform: scale(1.05);
+        }
+
+        /* Remove hover effect for 'Contact Us' and 'Locate Us' */
+        .image-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+        }
+
+        /* Google Map Container */
+        .map-container {
+            width: 100%;
+            max-width: 1200px;
+            height: 400px; /* Reduced height for mobile */
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+
+            margin: 40px auto;
+            background-color: #f0f0f0;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 999; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9); /* Black background with transparency */
+        }
+
+        .modal-content {
+            display: block;
+            width: 90vw; /* Full viewport width with some margin */
+            height: 90vh; /* Full viewport height with some margin */
+            object-fit: contain; /* Maintain aspect ratio */
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .modal-content:hover {
+            transform: scale(1.05);
+        }
+
+        /* Close button */
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #bbb;
+        }
+
+        footer {
+            margin-top: 30px;
+            font-size: 1.1em;
+            color: #a7ffeb;
+            text-align: center;
+        }
+
+        /* Text alignment style */
+        .left-align {
+            text-align: left;
+            color: black;
+            margin-left: 20px; /* Optional left margin */
+        }
+
+        /* Mobile-specific styles */
+        @media only screen and (max-width: 768px) {
+            .container {
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+
+            .map-container {
+                height: 300px; /* Adjust map height for mobile */
+            }
+
+            .image-container {
+                margin: 20px auto;
+            }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        {% include 'header.html' %}
+    </header>
+
+    <div class="container">
+        <!-- Navigation Menu -->
+        <nav>
+            <ul class="menu">
+                <li><a href="{% url 'index' %}">HOME</a></li>
+                <li><a href="{% url 'about' %}">ABOUT</a></li>
+                <li><a href="{% url 'news' %}">NEWS</a></li>
+                <li><a href="{% url 'issuances' %}">ISSUANCES</a></li>
+                <li><a href="{% url 'qms' %}">QMS</a></li>
+                <li><a href="{% url 'procurement' %}">PROCUREMENT</a></li>
+                <li><a href="{% url 'learningresources' %}">LEARNING RESOURCES</a></li>
+                <li><a href="{% url 'research' %}">RESEARCH</a></li>
+                <li><a href="{% url 'contact' %}">CONTACT US</a></li>
+            </ul>
+        </nav>
+
+        <!-- Single Divider Line -->
+        <div class="divider"></div>
+
+        <!-- Photo Section for CMS -->
+        <h2 class="left-align">SDO Binan Client Satisfaction Measurement (CSM)</h2>
+        <div class="image-container">
+            <img id="imageZoom" src="{% static 'images/cms.png' %}" alt="SDO Binan Client Satisfaction Measurement (CSM)">
+        </div>
+
+        <!-- Modal for Full-Screen Image -->
+        <div id="imageModal" class="modal">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="zoomedImage">
+        </div>
+
+        <!-- Photo Section for 'Contact Us' -->
+        <h2 class="left-align">Contact Us</h2>
+        <div class="image-container">
+            <img src="{% static 'images/local.png' %}" alt="Contact Us">
+        </div>
+
+        <!-- Google Map Section for 'Locate Us' -->
+        <h2 class="left-align">Locate Us</h2>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2005.4171623255323!2d121.0719182!3d14.314454!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd5c30871cb39d%3A0xa548b26f3b7a9dc9!2s102%20P.%20Burgos%20Street%2C%20Binan%2C%204024%20Laguna!5e0!3m2!1sen!2sph!4v1695111815882"
+            allowfullscreen loading="lazy"></iframe>
+        </div>
+        <p>Our location: 102 P. Burgos Street, Biñan, 4024 Laguna</p>
+    </div>
+
+    <footer>
+        {% include 'footer.html' %}
+    </footer>
+
+    <script>
+        // JavaScript for modal image display
+        var modal = document.getElementById("imageModal");
+        var img = document.getElementById("imageZoom");
+        var modalImg = document.getElementById("zoomedImage");
+        var span = document.getElementsByClassName("close")[0];
+
+        img.onclick = function() {
+            modal.style.display = "block";
+            modalImg.src = this.src;
+        }
+
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+
+</html>
